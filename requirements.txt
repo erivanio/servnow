@@ -1,0 +1,9 @@
+django==1.7.1
+MySQL-python==1.2.5
+django-flat-theme
+easy_thumbnails==2.0.1
+django-image-cropping==0.8.2
+django-annoying==0.8.1
+django-decouple==2.1
+django-ckeditor==4.4.4
+djangorestframework==3.2.3
