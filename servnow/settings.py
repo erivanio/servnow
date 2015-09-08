@@ -15,7 +15,8 @@ from decouple import config
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'h7tt5n$+o_0qqxe8zd-qw_oysrb067t7g*dtg11e$qu4_9f'
+# SECRET_KEY = config('SECRET_KEY')
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
 
@@ -39,7 +40,8 @@ TEMPLATE_DEBUG = True
 
 MANAGERS = ADMINS
 
-DEBUG = config('DEBUG')
+DEBUG = True
+# DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
