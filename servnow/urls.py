@@ -3,9 +3,9 @@ from django.contrib import admin
 from servnow import settings
 
 urlpatterns = patterns('',
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^', include(admin.site.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^', include('apps.core.urls')),
+    url(r'^API/', include('apps.core.urls')),
 )
 
 urlpatterns += patterns('',
