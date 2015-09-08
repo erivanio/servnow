@@ -6,21 +6,24 @@ from image_cropping import ImageRatioField
 
 
 class Service(models.Model):
-    name = models.CharField("Nome", max_length=100, null=True, blank=True)
+    name = models.CharField("Nome", max_length=100)
 
     class Meta:
         verbose_name = u'Serviço'
         verbose_name_plural = u'Serviços'
 
+    def __unicode__(self):
+        return self.name
+
 
 class Client(models.Model):
     name = models.CharField("Nome", max_length=100, null=True, blank=True)
-    phone = models.IntegerField("Telefone", max_length=20, unique=True, help_text="Somente números. Ex.: 99999999999")
+    phone = models.CharField("Telefone", max_length=20, unique=True, help_text="Somente números. Ex.: 99999999999")
     email = models.EmailField(null=True, blank=True)
     latitude = models.CharField(max_length=20, null=True, blank=True)
     longitude = models.CharField(max_length=20, null=True, blank=True)
     description = models.CharField("Descrição", max_length=140, null=True, blank=True, help_text="Até 140 caracteres.")
-    service = models.ForeignKey(Service, null=True, blank=True)
+    service = models.ManyToManyField('Service', null=True, blank=True)
     image = models.ImageField("Imagem", upload_to='uploads/client/', blank=True)
     image_small = ImageRatioField('image', '185x185', verbose_name='Imagem pequena', help_text="Foto do perfil do usuário.")
     status = models.BooleanField(default=False)
@@ -33,7 +36,7 @@ class Client(models.Model):
         get_latest_by = 'created_at'
 
     def __unicode__(self):
-        return self.phone
+        return u'%s' % str(self.phone)
 
     def get_image_small(self):
         return get_thumbnailer(self.image).get_thumbnail({'size': (185, 185), 'box': self.image_small, 'crop': True, 'detail': True, }).url
