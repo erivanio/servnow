@@ -81,23 +81,28 @@ WSGI_APPLICATION = 'servnow.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
+## configuracoes para o heroku
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.%s' % config('DB_ENGINE'),
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD', default=''),
-        'HOST': config('DB_HOST', default='localhost'),
-        'PORT': config('DB_PORT', cast=int),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ddmvkkpv74ia2i',
+        'USER': 'brlkvjbytmsuya',
+        'PASSWORD': 'znA21a2t82JTK4mSwMAIuz5BSV',
+        'HOST': 'ec2-54-235-162-144.compute-1.amazonaws.com',
+        'PORT': 5432
     }
 }
 
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_HOST_USER = config('EMAIL_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_PWD')
-EMAIL_SUBJECT_PREFIX = config('EMAIL_SUBJECT_PREFIX')
-EMAIL_USE_TLS = config('EMAIL_TLS', cast=bool)
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
+import dj_database_url
+DATABASES['default'] = dj_database_url.config()
+
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_HOST_USER = config('EMAIL_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_PWD')
+# EMAIL_SUBJECT_PREFIX = config('EMAIL_SUBJECT_PREFIX')
+# EMAIL_USE_TLS = config('EMAIL_TLS', cast=bool)
+# EMAIL_PORT = config('EMAIL_PORT', cast=int)
 
 LANGUAGE_CODE = 'pt-br'
 
