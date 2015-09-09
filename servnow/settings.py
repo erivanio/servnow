@@ -26,12 +26,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
 
-STATICFILES_DIRS = (os.path.join(MEDIA_ROOT, 'static'),)
+# STATICFILES_DIRS = (os.path.join(MEDIA_ROOT, 'static'),)
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
