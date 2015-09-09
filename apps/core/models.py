@@ -73,11 +73,19 @@ class Institution(models.Model):
         verbose_name_plural = u'Instituições'
 
     def get_image_small(self):
-        return get_thumbnailer(self.image).get_thumbnail({'size': (185, 185), 'box': self.image_small, 'crop': True, 'detail': True, }).url
+        return get_thumbnailer(self.image).get_thumbnail({'size': (90, 90), 'box': self.image_small, 'crop': True, 'detail': True, }).url
 
-    get_image_small.is_safe = True
-    get_image_small.allow_tags = True
-    get_image_small.short_description = u'Imagem'
+    def imageAdmin(self):
+        if self.image:
+            im = get_thumbnailer(self.image).get_thumbnail({'size': (90, 90), 'box': self.image_small})
+            return '<img src="{0}" />'.format(im.url)
+        else:
+            return 'Sem Imagem'
+
+    imageAdmin.is_safe = True
+    imageAdmin.allow_tags = True
+    imageAdmin.short_description = u'Imagem'
+
 
 class Certificate(models.Model):
     institution = models.ForeignKey(Institution, verbose_name="Instituição parceira")

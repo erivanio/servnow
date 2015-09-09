@@ -16,7 +16,7 @@ class PhotoServiceAdmin(ImageCroppingMixin, admin.ModelAdmin):
 
 
 class InstitutionAdmin(ImageCroppingMixin, admin.ModelAdmin):
-    list_display = ('get_image_small', 'name')
+    list_display = ('imageAdmin', 'name')
     search_fields = ['name']
 
 
