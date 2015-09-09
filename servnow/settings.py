@@ -13,7 +13,7 @@ import os
 import socket
 from decouple import config
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 SECRET_KEY = 'h7tt5n$+o_0qqxe8zd-qw_oysrb067t7g*dtg11e$qu4_9f'
 # SECRET_KEY = config('SECRET_KEY')
@@ -24,7 +24,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = 'staticfiles'
 
 STATICFILES_DIRS = (os.path.join(MEDIA_ROOT, 'static'),)
 
